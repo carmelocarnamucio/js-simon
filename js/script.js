@@ -24,10 +24,8 @@ function timer() {
   // Chiedo numeri a utente
   for (var i = 0; arrayUser.length < 5; i++) {
     var numUtente = parseInt(prompt("Inserisci un numero"));
-    //se il numero inserito dall'utente
-    if (numUtente >= 1 &&
-       numUtente <= 100 &&
-       !arrayUser.includes(numUtente)) {
+    //se il numero inserito dall'utente valido pusha nell'arrayUser
+    if (numUtente >= 1 && !arrayUser.includes(numUtente)) {
        arrayUser.push(numUtente);
     //altrimenti se utente inserisce carattere e/o un numero già inserito allert di errore
     } else {
@@ -44,7 +42,7 @@ function timer() {
     }
   }
 
-  console.log(" indovinati", arrayRight);
+  console.log(" Numeri indovinati", arrayRight);
 
   alert("Hai indovinato " + arrayRight.length + " numeri: " + arrayRight);
 
