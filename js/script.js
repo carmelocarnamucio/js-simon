@@ -5,11 +5,10 @@
 
 $(document).ready(function () {
 
-  // il gioco comincia quando viene premuto il pulsante
+  // il gioco comincia al click sul pulsante
   document.getElementById('start').addEventListener('click',
     function() {
 
-     //le variabili che devo utilizzare
      var arrayRandom = [];
      var arrayUser = [];
      var arrayRight = [];
@@ -39,7 +38,7 @@ $(document).ready(function () {
           seconds--;
           }
 
-      }, 400); //da inserire dati corretti (1000) messo così per le prove
+      }, 410); //da inserire dati corretti (1000) messo così per le prove
 
       // appare alert con i numeri generati random
       alert("Memorizza i numeri: " + arrayRandom);
@@ -55,9 +54,9 @@ $(document).ready(function () {
           //se il numero inserito dall'utente è valido pusha nell'arrayUser
           if (numUtente >= 1 && !arrayUser.includes(numUtente)) {
             arrayUser.push(numUtente);
-            //altrimenti se utente inserisce carattere e/o un numero già inserito allert di errore
+            //altrimenti se utente inserisce carattere e/o un numero già inserito dare alert di errore
           } else {
-            alert("ATTENZIONE: Hai inserito un carattere o hai già inserito questo numero ");
+            alert("ERRORE! Hai inserito un carattere o hai già inserito questo numero ");
           }
         }
 
@@ -74,6 +73,9 @@ $(document).ready(function () {
 
         //alert che informa l'utente dell'esito del gioco
         alert("Hai indovinato " + arrayRight.length + " numeri: " + arrayRight);
+
+        // stampo il punteggio ottenuto
+        document.getElementById("score").innerHTML = "Punteggio ottenuto: " + arrayRight.length;
 
       }
 
