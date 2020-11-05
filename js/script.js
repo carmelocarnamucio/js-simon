@@ -2,69 +2,81 @@
 //Dopo 30 secondi l’utente deve inserire, un prompt alla volta, i numeri che ha visto precedentemente.
 //Una volta inseriti i 5 numeri, il software dice quanti e quali numeri sono stati ricordati.
 
-var arrayCpu = [];
-var arrayUser = [];
-var arrayRight = [];
 
-// Genero i numeri da indovinare
-for (var i = 0; arrayCpu.length < 5; i++) {
-  var numCpu = Math.floor(Math.random() * 100) + 1;
-  if (!arrayCpu.includes(numCpu)) {
-    arrayCpu.push(numCpu);
-  }
-}
+$(document).ready(function () {
 
-//console.log("Array CPU", arrayCpu);
+  // il gioco comincia quando viene premuto il pulsante
+  document.getElementById('start').addEventListener('click',
+    function() {
 
-// stampo countdown
-var seconds = 30;
+     //le variabili che devo utilizzare
+     var arrayRandom = [];
+     var arrayUser = [];
+     var arrayRight = [];
 
-var display = document.getElementById('timer');
+     // Genero i numeri da indovinare
+     for (var i = 0; arrayRandom.length < 5; i++) {
+     var numCpu = Math.floor(Math.random() * 100) + 1;
+     if (!arrayRandom.includes(numCpu)) {
+        arrayRandom.push(numCpu);
+        }
+      }
 
-var timerDisplay = setInterval(function() {
+      //console.log("Array CPU", arrayRandom);
 
-  display.innerHTML = seconds;
+      // stampo countdown
+      var seconds = 30;
 
-  if (seconds === 0) {
-    clearInterval(timerDisplay)
-  } else {
-    seconds--;
-  }
+      var display = document.getElementById('timer');
 
-}, 500); //da inserire dati corretti (1000) messo così per le prove
+      var timerDisplay = setInterval(function() {
 
-// appare alert con i numeri generati random
-alert("Memorizza i numeri: " + arrayCpu);
+       display.innerHTML = seconds;
+
+       if (seconds === 0) {
+         clearInterval(timerDisplay)
+         } else {
+          seconds--;
+          }
+
+      }, 400); //da inserire dati corretti (1000) messo così per le prove
+
+      // appare alert con i numeri generati random
+      alert("Memorizza i numeri: " + arrayRandom);
 
 
-setTimeout(timer , 16000);  //da inserire dati corretti (30000) messo così per le prove
+      setTimeout(timer , 13000);  //da inserire dati corretti (30000) messo così per le prove
 
-function timer() {
+      function timer() {
 
-  // Chiedo numeri a utente
-  for (var i = 0; arrayUser.length < 5; i++) {
-    var numUtente = parseInt(prompt("Inserisci un numero"));
-    //se il numero inserito dall'utente è valido pusha nell'arrayUser
-    if (numUtente >= 1 && !arrayUser.includes(numUtente)) {
-       arrayUser.push(numUtente);
-    //altrimenti se utente inserisce carattere e/o un numero già inserito allert di errore
-    } else {
-      alert("ATTENZIONE: Hai inserito un carattere o hai già inserito questo numero ");
-    }
-  }
+       // Chiedo numeri all'utente
+       for (var i = 0; arrayUser.length < 5; i++) {
+        var numUtente = parseInt(prompt("Inserisci un numero"));
+          //se il numero inserito dall'utente è valido pusha nell'arrayUser
+          if (numUtente >= 1 && !arrayUser.includes(numUtente)) {
+            arrayUser.push(numUtente);
+            //altrimenti se utente inserisce carattere e/o un numero già inserito allert di errore
+          } else {
+            alert("ATTENZIONE: Hai inserito un carattere o hai già inserito questo numero ");
+          }
+        }
 
-  //console.log("Numeri inseriti da utente", arrayUser);
+        //console.log("Numeri inseriti da utente", arrayUser);
 
-  // Controllo dei dati e risultato
-  for (var i = 0; i < 5; i++) {
-    if (arrayCpu.includes(arrayUser[i])) {
-      arrayRight.push(arrayUser[i]);
-    }
-  }
+        // Controllo dei dati e risultato
+        for (var i = 0; i < 5; i++) {
+          if (arrayRandom.includes(arrayUser[i])) {
+            arrayRight.push(arrayUser[i]);
+          }
+        }
 
-  //console.log(" Numeri indovinati", arrayRight);
+        //console.log(" Numeri indovinati", arrayRight);
 
-  //alert che informa l'utente dell'esito del gioco
-  alert("Hai indovinato " + arrayRight.length + " numeri: " + arrayRight);
+        //alert che informa l'utente dell'esito del gioco
+        alert("Hai indovinato " + arrayRight.length + " numeri: " + arrayRight);
 
-}
+      }
+
+  });
+
+});

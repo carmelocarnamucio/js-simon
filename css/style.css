@@ -17,6 +17,18 @@
   font-size: 30px;
 }
 
+
+button {
+  text-align: center;
+  margin: 50px 0;
+  padding: 20px;
+  font-size: 30px;
+  color: black;
+  background-color: red;
+  border: 2px solid white;
+}
+
+
 #timer {
   display: flex;
   justify-content: center;
