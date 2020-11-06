@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-  // il gioco comincia al click sul pulsante
+  //il gioco comincia al click sul pulsante
   document.getElementById('start').addEventListener('click',
     function() {
 
@@ -15,15 +15,15 @@ $(document).ready(function () {
 
      // Genero i numeri da indovinare
      for (var i = 0; arrayRandom.length < 5; i++) {
-     var numCpu = Math.floor(Math.random() * 100) + 1;
-     if (!arrayRandom.includes(numCpu)) {
-        arrayRandom.push(numCpu);
+     var numRandom = Math.floor(Math.random() * 100) + 1;
+     if (!arrayRandom.includes(numRandom)) {
+        arrayRandom.push(numRandom);
         }
       }
 
       //console.log("Array CPU", arrayRandom);
 
-      // stampo countdown
+      //stampo countdown
       var seconds = 30;
 
       var display = document.getElementById('timer');
@@ -38,17 +38,17 @@ $(document).ready(function () {
           seconds--;
           }
 
-      }, 410); //da inserire dati corretti (1000) messo così per le prove
+      }, 200);
 
-      // appare alert con i numeri generati random
+      //appare alert con i numeri generati random
       alert("Memorizza i numeri: " + arrayRandom);
 
 
-      setTimeout(timer , 13000);  //da inserire dati corretti (30000) messo così per le prove
+      setTimeout(timer , 100);
 
       function timer() {
 
-       // Chiedo numeri all'utente
+       //Chiedo numeri all'utente
        for (var i = 0; arrayUser.length < 5; i++) {
         var numUtente = parseInt(prompt("Inserisci un numero"));
           //se il numero inserito dall'utente è valido pusha nell'arrayUser
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
         //console.log("Numeri inseriti da utente", arrayUser);
 
-        // Controllo dei dati e risultato
+        //Controllo dei dati e risultato
         for (var i = 0; i < 5; i++) {
           if (arrayRandom.includes(arrayUser[i])) {
             arrayRight.push(arrayUser[i]);
@@ -71,11 +71,15 @@ $(document).ready(function () {
 
         //console.log(" Numeri indovinati", arrayRight);
 
-        //alert che informa l'utente dell'esito del gioco
-        alert("Hai indovinato " + arrayRight.length + " numeri: " + arrayRight);
+        //stampo il punteggio ottenuto e i numeri che l'utente è riuscito a ricordare
+        document.getElementById("score").innerHTML = arrayRight.length;
+        document.getElementById("remember").innerHTML = arrayRight;
 
-        // stampo il punteggio ottenuto
-        document.getElementById("score").innerHTML = "Punteggio ottenuto: " + arrayRight.length;
+        //togliere dalla pagina il countdown e il bottone e far apparire solo lo score
+        $('.container').removeClass('active');
+        $('.container').addClass('invisible');
+        $('.container2').removeClass('invisible');
+        $('.container2').addClass('active');
 
       }
 
