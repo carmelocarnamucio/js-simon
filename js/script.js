@@ -38,13 +38,13 @@ $(document).ready(function () {
           seconds--;
           }
 
-      }, 200);
+      }, 1000);
 
       //appare alert con i numeri generati random
       alert("Memorizza i numeri: " + arrayRandom);
 
 
-      setTimeout(timer , 100);
+      setTimeout(timer , 30000);
 
       function timer() {
 
@@ -75,11 +75,12 @@ $(document).ready(function () {
         document.getElementById("score").innerHTML = arrayRight.length;
         document.getElementById("remember").innerHTML = arrayRight;
 
-        //togliere dalla pagina il countdown e il bottone e far apparire solo lo score
-        $('.container').removeClass('active');
-        $('.container').addClass('invisible');
-        $('.container2').removeClass('invisible');
-        $('.container2').addClass('active');
+        //per avere lo switchdi  iterfaccia. Un prima e un dopo il gioco
+        $('.before').removeClass('active');
+        $('.before').addClass('invisible');
+        $('.result').removeClass('invisible');
+        $('.result').addClass('active');
+        $('.container').addClass('border');
 
       }
 

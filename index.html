@@ -10,35 +10,29 @@
     </head>
     <body>
 
-      <div class="container active">
+      <div class="container">
+
+        <div class="result invisible">
+          <p>Punteggio ottenuto:</p>
+          <h1 id="score"> </h1>
+        </div>
+
+        <div class="result invisible">
+          <p>Hai ricordato i seguenti numeri:</p>
+          <h1 id="remember"> </h1>
+        </div>
+
+        <div class="result invisible">
+          <p>Se vuoi riprovare premi il tasto play</p>
+        </div>
 
         <button id="start" type="button" name="start">
           PLAY
         </button>
 
-        <span>Ricorda i numeri...</span>
+        <span class="before active">Ricorda i numeri...</span>
 
-        <div id="timer"></div>
-
-      </div>
-
-      <div class="container2 invisible">
-
-        <button id="start" type="button" name="start">
-          PLAY AGAIN
-        </button>
-
-        <div>
-          <p>Punteggio ottenuto:</p>
-          <h1 id="score"> </h1>
-        </div>
-
-
-        <div>
-          <p>Hai ricordato i seguenti numeri:</p>
-          <h1 id="remember"> </h1>
-        </div>
-
+        <div id="timer" class="before active"></div>
 
       </div>
 
