@@ -75,12 +75,26 @@ $(document).ready(function () {
         document.getElementById("score").innerHTML = arrayRight.length;
         document.getElementById("remember").innerHTML = arrayRight;
 
-        //per avere lo switchdi  iterfaccia. Un prima e un dopo il gioco
+        //per avere lo switch di iterfaccia. Un prima e un dopo il gioco
         $('.before').removeClass('active');
         $('.before').addClass('invisible');
         $('.result').removeClass('invisible');
         $('.result').addClass('active');
         $('.container').addClass('border');
+        $('.stgame').removeClass('active');
+        $('.stgame').addClass('invisible');
+        $('.again').removeClass('invisible');
+        $('.again').addClass('active');
+        //se clicco su "play again" ritorna l'interfaccia iniziale
+        $('#start').click( function () {
+          if ($("#start").hasClass("active")){
+            $('.before').removeClass('invisible');
+            $('.before').addClass('active');
+            $('.result').removeClass('active');
+            $('.result').addClass('invisible');
+            $('.container').removeClass('border');
+          }
+        });
 
       }
 
